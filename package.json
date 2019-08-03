@@ -1,5 +1,5 @@
 {
-  "name": "commons-depictions",
+  "name": "commons-depicts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,7 +22,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build-wmflabs": "PUBLIC_URL=/depicts react-scripts build",
+    "deploy-wmflabs": "./node_modules/.bin/gh-pages -d build -b wmflabs -r https://$GITHUB_TOKEN@github.com/stevenliuyi/commons-depicts.git -s '{**/*,.travis.yml}'"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -38,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
   }
 }

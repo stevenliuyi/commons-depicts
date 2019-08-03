@@ -11,11 +11,11 @@ class TopNavBar extends Component {
     return (
       <Navbar bg="light" sticky="top">
         <Navbar.Brand>
-          <span className="app-name"><Link to="/">Commons Depictions</Link></span>
+          <span className="app-name"><Link to="/">Depicts</Link></span>
         </Navbar.Brand>
         <Navbar.Collapse style={{ justifyContent: 'flex-end' }}>
           <Nav>
-            <Nav.Link href="https://github.com/stevenliuyi/commons-depictions">
+            <Nav.Link href="https://github.com/stevenliuyi/commons-depicts">
               <OverlayTrigger
                 placement="bottom"
                 overlay={

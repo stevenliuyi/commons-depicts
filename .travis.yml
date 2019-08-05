@@ -20,7 +20,7 @@ after_success:
   - ./travis/deploy.sh
 
 addons:
-  ssh_known_hosts: login.tools.wmflabs.org
+  ssh_known_hosts: tools-login.wmflabs.org
 
 notifications:
   email: false

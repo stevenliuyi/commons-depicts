@@ -11,7 +11,7 @@ class App extends Component {
     return (
       <div className="site">
         <div className="site-content">
-          <Router basename={process.env.PUBLIC_URL}>
+          <Router>
             <div>
               <Route path="/" component={TopNavBar} />
               <Switch>

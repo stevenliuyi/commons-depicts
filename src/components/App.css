@@ -78,3 +78,8 @@
   padding-bottom: 20px;
   color: #555;
 }
+
+.source-code {
+  font-family: monospace;
+  background-color: #eee;
+}

@@ -11,4 +11,6 @@ export const getThumbURL = (title, width) => {
 }
 
 export const getOriginalURL = title =>
-    `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(title.substr(5))}`
+  `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(
+    title.substr(5)
+  )}`

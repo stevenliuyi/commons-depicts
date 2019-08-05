@@ -7,24 +7,21 @@ import ImageGallery from './ImageGallery'
 import Home from './Home'
 
 class App extends Component {
-
   render() {
     return (
       <div className="site">
         <div className="site-content">
-            <Router basename={process.env.PUBLIC_URL}>
-              <div>
-                <Route path="/" component={TopNavBar} />
-               <Switch>
+          <Router basename={process.env.PUBLIC_URL}>
+            <div>
+              <Route path="/" component={TopNavBar} />
+              <Switch>
                 <Route exact path="/:qid([qQ]\d+)" component={ImageGallery} />
                 <Route path="/" component={Home} />
-               </Switch>
+              </Switch>
+            </div>
+          </Router>
         </div>
-           </Router>
-        </div>
-        <footer className="footer">
-          Steven Liu&nbsp;&nbsp;2019
-        </footer>
+        <footer className="footer">Steven Liu&nbsp;&nbsp;2019</footer>
       </div>
     )
   }

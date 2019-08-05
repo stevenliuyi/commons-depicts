@@ -11,16 +11,16 @@ class TopNavBar extends Component {
     return (
       <Navbar bg="light" sticky="top">
         <Navbar.Brand>
-          <span className="app-name"><Link to="/">Depicts</Link></span>
+          <span className="app-name">
+            <Link to="/">Depicts</Link>
+          </span>
         </Navbar.Brand>
         <Navbar.Collapse style={{ justifyContent: 'flex-end' }}>
           <Nav>
             <Nav.Link href="https://github.com/stevenliuyi/commons-depicts">
               <OverlayTrigger
                 placement="bottom"
-                overlay={
-                  <Tooltip id="source">source code</Tooltip>
-                }
+                overlay={<Tooltip id="source">source code</Tooltip>}
               >
                 <GoMarkGithub size={18} />
               </OverlayTrigger>

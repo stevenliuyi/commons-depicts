@@ -15,9 +15,23 @@ export const fetchSPARQLResult = sparql =>
     })
 
 export const validateQID = qid =>
-  fetch(`https://www.wikidata.org/wiki/Special:EntityData/${qid}`).then(
-    res => res.ok
+  fetch(
+    `https://www.wikidata.org/w/api.php?action=wbgetentities&props=labels&ids=${qid}&languages=en&format=json&origin=*`
   )
+    .then(res => {
+      return res.status >= 400 ? null : res.json()
+    })
+    .then(res =>
+      res.entities == null
+        ? null
+        : res.entities[qid].labels.en
+        ? res.entities[qid].labels.en.value
+        : ''
+    )
+    .catch(err => {
+      console.log(err)
+      return null
+    })
 
 export const fetchDepictions = qid =>
   fetch(

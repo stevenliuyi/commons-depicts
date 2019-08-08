@@ -19,7 +19,7 @@ class Home extends Component {
             >
               Q41994
             </a>{' '}
-            (<i>Phoenicopterus</i>, or flamingos).
+            (<i>Phoenicopterus</i>, or flamingo).
           </p>
           <p>
             You may also add{' '}

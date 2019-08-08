@@ -15,7 +15,7 @@ import { lightboxTheme } from '../utils/gallery'
 class ImageGallery extends Component {
   state = {
     qid: null,
-    status: false,
+    label: null,
     images: [],
     totalhits: 0,
     width: -1,
@@ -50,9 +50,14 @@ class ImageGallery extends Component {
     this.setState({ images: new_images, loadingStatus: 'loaded' })
   }
 
+  showQID = () =>
+    this.state.label
+      ? `${this.state.qid} (${this.state.label})`
+      : this.state.qid
+
   componentDidMount() {
     const qid = this.props.match.params.qid.toUpperCase()
-    validateQID(qid).then(status => this.setState({ qid, status }))
+    validateQID(qid).then(label => this.setState({ qid, label }))
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -82,7 +87,7 @@ class ImageGallery extends Component {
   render() {
     const {
       qid,
-      status,
+      label,
       images,
       totalhits,
       width,
@@ -93,19 +98,19 @@ class ImageGallery extends Component {
     if (qid == null) return <div />
     return (
       <Container>
-        {!status && (
+        {label == null && (
           <Message
             icon={IoIosWarning}
-            info={`Wikidata item ${qid} cannot be found`}
+            info={`Wikidata item ${this.showQID()} cannot be found`}
           />
         )}
-        {status && loadingStatus === 'loading' && (
+        {label != null && loadingStatus === 'loading' && (
           <Message
             icon="spinner"
-            info={`Loading images depicting Wikidata item ${qid}`}
+            info={`Loading images depicting Wikidata item ${this.showQID()}`}
           />
         )}
-        {status && loadingStatus === 'loaded' && images.length > 0 && (
+        {label != null && loadingStatus === 'loaded' && images.length > 0 && (
           <Measure
             bounds
             onResize={contentRect =>
@@ -122,7 +127,7 @@ class ImageGallery extends Component {
                 <div ref={measureRef}>
                   <Row>
                     <div className="depict-title">
-                      <span>{`Depictions of ${qid} on Wikimedia Commons`}</span>
+                      <span>{`Depictions of ${this.showQID()} on Wikimedia Commons`}</span>
                       <span className="depict-hits">{`${totalhits} images found${
                         totalhits > 100 ? ', only the first 100 are shown' : ''
                       }`}</span>
@@ -152,14 +157,14 @@ class ImageGallery extends Component {
             }}
           </Measure>
         )}
-        {status && loadingStatus === 'loaded' && images.length === 0 && (
+        {label != null && loadingStatus === 'loaded' && images.length === 0 && (
           <Message
             icon={IoIosWarning}
-            info={`Cannot find any depictions of ${qid} on Wikimedia Commons.`}
+            info={`Cannot find any depictions of ${this.showQID()} on Wikimedia Commons.`}
           />
         )}
         {/* load tiny thumbs to obtain the heights and widths of the images for later display */}
-        {status && loadingStatus === 'loading' && images.length > 0 && (
+        {label && loadingStatus === 'loading' && images.length > 0 && (
           <OnImagesLoaded onLoaded={() => this.handleImagesLoaded()}>
             {images.map((img, i) => (
               <img

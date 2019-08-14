@@ -1,0 +1,9 @@
+{
+    "name" : "depicts",
+    "title" : "Commons Depicts",
+    "description" : "displaying depictions of Wikidata items on Wikimedia Commons",
+    "url" : "https://tools.wmflabs.org/dataviz",
+    "keywords" : "wikidata, commons, image",
+    "author" : "Steven Liu",
+    "repository" : "https://github.com/stevenliuyi/commons-depicts"
+}
